@@ -273,9 +273,7 @@ public abstract class Monstruo{
 		return danio;
     }
     
-	protected abstract int causarDanio2( Monstruo enemigo ){
-	
-	}
+	protected abstract int causarDanio2( Monstruo enemigo );
 
 
 	

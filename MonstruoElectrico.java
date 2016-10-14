@@ -75,7 +75,7 @@ public abstract class MonstruoElectrico extends Monstruo{
 	System.out.println("¡" + this.apodo + "realiza latigazo");
 	danioInfringido = causarDanio( enemigo );
 	System.out.println("El enemigo ha recibido: " + danioInfringido +
-		" de daño en este turo"
+		" de daño en este turno"
 	);
 
 	if( enemigo.estado.compareTo("fuera de combate") == 0 ){

@@ -53,7 +53,7 @@ public abstract class MonstruoFuego extends Monstruo{
     ){
 	super(
 		"fuego",
-		File archTarjeta,
+		archTarjeta,
 		hpBase,
 		atqBase,
 		defBase,
