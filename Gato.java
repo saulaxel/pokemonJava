@@ -19,23 +19,19 @@ import java.io.File;
  * @author paco 
  * @author saul
 */
-public class Pikachu extends MonstruoElectrico{
+public class Gato extends MonstruoHierba{
 //    public void ataque2(Monstruo objetivo){}
 
-	public Pikachu(
-		int hpBase, 
-		int atqBase, 
-		int defBase,
-	    int velBase,
+	public Gato(
 	    String apodo,
 	    byte nivel
 	){ 
 		super(
-			new File("./monstruos_ascii/pokemon3.txt"),
-			18,
+			new File("./monstruos_ascii/pokemon2.txt"),
+			17,
+			13,
+			16,
 			15,
-			12,
-			20,
 			apodo,
 			nivel
 			);
@@ -44,8 +40,8 @@ public class Pikachu extends MonstruoElectrico{
 	public void ataque2(Monstruo enemigo){
 		int danioInfringido;
 
-		System.out.println("¡" + this.apodo + " realiza paralizar");
-		danioInfringido = causarDanio2( enemigo );
+		System.out.println("¡" + this.apodo + " realiza rasguño");
+		danioInfringido = causarDanio( enemigo );
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
 		);
@@ -53,21 +49,6 @@ public class Pikachu extends MonstruoElectrico{
 		if( enemigo.estado.compareTo("fuera de combate") == 0 ){
 		    recibirExperiencia( enemigo );  
 		}
-    }
-
-
-    protected int causarDanio2( Monstruo enemigo){
-        System.out.println("¡" + this.apodo + " realiza paralizar");
-
-        if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
-            enemigo.estado = "paralizado";
-
-            enemigo.animarDanio( (byte)0 );
-            System.out.println("El enemigo está paralizado.");
-        }else{
-            System.out.println("Falló");
-        }
-        return 0;
     }
 
 }

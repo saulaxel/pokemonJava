@@ -23,19 +23,15 @@ public class Electrode extends MonstruoElectrico{
 //    public void ataque2(Monstruo objetivo){}
 
 	public Electrode(
-		int hpBase, 
-		int atqBase, 
-		int defBase,
-	    int velBase,
 	    String apodo,
 	    byte nivel
 	){ 
 		super(
 			new File("./monstruos_ascii/pokemon1.txt"),
-			hpBase,
-			atqBase,
-			defBase,
-			velBase,
+			20,
+			15,
+			16,
+			20,
 			apodo,
 			nivel
 			);
@@ -45,7 +41,7 @@ public class Electrode extends MonstruoElectrico{
 		int danioInfringido;
 
 		System.out.println("¡" + this.apodo + " realiza paralizar");
-		danioInfringido = causarDanio( enemigo );
+		danioInfringido = causarDanio2( enemigo );
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
 		);
@@ -55,4 +51,18 @@ public class Electrode extends MonstruoElectrico{
 		}
     }
 
+
+    protected int causarDanio2( Monstruo enemigo){
+        System.out.println("¡" + this.apodo + " realiza paralizar");
+
+        if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
+            enemigo.estado = "paralizado";
+
+            enemigo.animarDanio( (byte)0 );
+            System.out.println("El enemigo está paralizado.");
+        }else{
+            System.out.println("Falló");
+        }
+        return 0;
+    }
 }
