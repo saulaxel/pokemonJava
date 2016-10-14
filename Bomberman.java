@@ -19,17 +19,17 @@ import java.io.File;
  * @author paco 
  * @author saul
 */
-public class Gato extends MonstruoHierba{
+public class Bomberman extends Bomberman{
 //    public void ataque2(Monstruo objetivo){}
 
-	public Gato(
+	public Bomberman(
 	    String apodo,
 	    byte nivel
 	){ 
 		super(
-			new File("./monstruos_ascii/pokemon2.txt"),
-			17,
-			13,
+			new File("./monstruos_ascii/pokemon9.txt"),
+			19,
+			14,
 			16,
 			15,
 			apodo,
@@ -40,7 +40,7 @@ public class Gato extends MonstruoHierba{
 	public void ataque2(Monstruo enemigo){
 		int danioInfringido;
 
-		System.out.println("¡" + this.apodo + " realiza rasguño");
+		System.out.println("¡" + this.apodo + " realiza explosión");
 		danioInfringido = causarDanio2( enemigo );
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
@@ -68,9 +68,9 @@ public class Gato extends MonstruoHierba{
 		    tipoDanio = 0;
 		}
 
-		enemigo.recibirDanio( (int)(danio*1.5) );
+		enemigo.recibirDanio( (int)(danio*2) );
 		enemigo.animarDanio( tipoDanio );
-		return (int)(danio*1.5);
+		return (int)(danio*2);
     }
 
 }

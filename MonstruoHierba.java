@@ -29,6 +29,7 @@ public abstract class MonstruoHierba extends Monstruo{
     }
     // Constructor completo
     public MonstruoHierba(
+    	File archTarjeta,
 	    int hpBase,
 	    int atqBase,
 	    int defBase,
@@ -38,11 +39,12 @@ public abstract class MonstruoHierba extends Monstruo{
     ){
 	super(
 		"hierba",
+		archTarjeta,
 		hpBase,
 		atqBase,
 		defBase,
 		velBase,
-		appodo,
+		apodo,
 		nivel
 	);
 
@@ -53,7 +55,7 @@ public abstract class MonstruoHierba extends Monstruo{
 
 	System.out.println("¡" + this.apodo + "realiza impactrueno");
 	danioInfringido = causarDanio( enemigo );
-	System.out.pritln("El enemigo ha recibido: " + danioInfringido +
+	System.out.println("El enemigo ha recibido: " + danioInfringido +
 		" de naño en este turno"
 	);
 
