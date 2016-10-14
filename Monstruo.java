@@ -89,10 +89,10 @@ public abstract class Monstruo{
 	}
 	TARJETA = tarjetaMonstruo;
 
-	this.HP_BASE = 15 + (int)(Math.random()*10);
-	this.ATAQUE_BASE = 10 + (int)(Math.random()*10);
-	this.DEFENSA_BASE = 10 + (int)(Math.random()*10);
-	this.VELOCIDAD_BASE = 10 + (int)(Math.random()*10);
+	this.HP_BASE = 15 + (int)(Math.random()*11);
+	this.ATAQUE_BASE = 10 + (int)(Math.random()*11);
+	this.DEFENSA_BASE = 10 + (int)(Math.random()*11);
+	this.VELOCIDAD_BASE = 10 + (int)(Math.random()*11);
 	this.apodo = "Pokemon genérico " + numGenericos;
 	this.nivel = 1;
 	this.estado = "ok";
@@ -252,26 +252,33 @@ public abstract class Monstruo{
      * @param enemigo Monstuo que recibirá el daño
      */
     protected int causarDanio( Monstruo enemigo ){
-	int danio = 0;
-	byte tipoDanio = 0;
+		int danio = 0;
+		byte tipoDanio = 0;
 
-	if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
-	    danio = (this.getAtaque() - enemigo.getDefensa());
-	    danio *= this.multiplicadorElemental( enemigo );
-	    if( (int)(Math.random()*10) == 0 ){ // 8% de golpe crItico
-		danio *= 2;
-		tipoDanio = 2;
-	    }else{
-		tipoDanio = 1;
-	    }
-	}else{
-	    tipoDanio = 0;
+		if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
+		    danio = (this.getAtaque() - enemigo.getDefensa());
+		    danio *= this.multiplicadorElemental( enemigo );
+		    if( (int)(Math.random()*10) == 0 ){ // 8% de golpe crItico
+			danio *= 2;
+			tipoDanio = 2;
+		    }else{
+			tipoDanio = 1;
+		    }
+		}else{
+		    tipoDanio = 0;
+		}
+
+		enemigo.recibirDanio( danio );
+		enemigo.animarDanio( tipoDanio );
+		return danio;
+    }
+    
+	protected abstract int causarDanio2( Monstruo enemigo ){
+	
 	}
 
-	enemigo.recibirDanio( danio );
-	enemigo.animarDanio( tipoDanio );
-	return danio;
-    }
+
+	
     
     /**
      * Método aplicado cuando un monstruo derrota a otro
@@ -375,30 +382,30 @@ public abstract class Monstruo{
      */
     @Override
     public String toString(){
-	String cadenaMonstruo = "";
+		String cadenaMonstruo = "";
 
-	cadenaMonstruo += ARRIBA;
-	int disponible = 28 - nombre.length();
-	String ri = r(".",disponible/2 + disponible%2);
-	String rd = r(".",disponible/2);
-	cadenaMonstruo += ESPACIO+"|"+ri+nombre+rd+"|\n";
-	cadenaMonstruo += TARJETA;
-	ri = r("_",28);
-	cadenaMonstruo += ESPACIO+"|"+ri+"|\n";
-	disponible = 28 - ("Alias: "+apodo).length();
-	ri = r(" ",disponible/2 + disponible%2);
-	rd = r(" ",disponible/2);
-	cadenaMonstruo += ESPACIO+"|"+ri+"Alias: "+apodo+rd+"|\n";
-	disponible = 28 - ("Nivel: "+nivel).length();
-	ri = r(" ",disponible/2 + disponible%2);
-	rd = r(" ",disponible/2);
-	cadenaMonstruo += ESPACIO+"|"+ri+"Nivel: "+nivel+rd+"|\n";
-	disponible = 28 - ("Exp faltante: "+expNecesaria).length();
-	ri = r(" ",disponible/2 + disponible%2);
-	rd = r(" ",disponible/2);
-	cadenaMonstruo += ESPACIO+"|"+ri+"Exp faltante: "+expNecesaria+rd+"|\n";
-	cadenaMonstruo += ABAJO;
-	return cadenaMonstruo;
+		cadenaMonstruo += ARRIBA;
+		int disponible = 28 - nombre.length();
+		String ri = r(".",disponible/2 + disponible%2);
+		String rd = r(".",disponible/2);
+		cadenaMonstruo += ESPACIO+"|"+ri+nombre+rd+"|\n";
+		cadenaMonstruo += TARJETA;
+		ri = r("_",28);
+		cadenaMonstruo += ESPACIO+"|"+ri+"|\n";
+		disponible = 28 - ("Alias: "+apodo).length();
+		ri = r(" ",disponible/2 + disponible%2);
+		rd = r(" ",disponible/2);
+		cadenaMonstruo += ESPACIO+"|"+ri+"Alias: "+apodo+rd+"|\n";
+		disponible = 28 - ("Nivel: "+nivel).length();
+		ri = r(" ",disponible/2 + disponible%2);
+		rd = r(" ",disponible/2);
+		cadenaMonstruo += ESPACIO+"|"+ri+"Nivel: "+nivel+rd+"|\n";
+		disponible = 28 - ("Exp faltante: "+expNecesaria).length();
+		ri = r(" ",disponible/2 + disponible%2);
+		rd = r(" ",disponible/2);
+		cadenaMonstruo += ESPACIO+"|"+ri+"Exp faltante: "+expNecesaria+rd+"|\n";
+		cadenaMonstruo += ABAJO;
+		return cadenaMonstruo;
     }
 
     // MEtodos referentes a la "animaciOn"
