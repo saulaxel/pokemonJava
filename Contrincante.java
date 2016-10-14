@@ -44,11 +44,11 @@ public class Contrincante{
 	    System.out.println("\t 1) Electrode");
 	    System.out.println("\t 2) Gato ");
 	    System.out.println("\t 3) Pikachu");
-	    System.out.println("\t 4) ");
-	    System.out.println("\t 5)");
-	    System.out.println("\t 6)");
-	    System.out.println("\t 7)");
-	    System.out.println("\t 8)");
+	    System.out.println("\t 4) Bobomb");
+	    System.out.println("\t 5) Bomberman ");
+	    System.out.println("\t 6) Chinchou");
+	    System.out.println("\t 7) Snorunt");
+	    System.out.println("\t 8) Wynaut");
 	    System.out.println("\t 9)");
 	    System.out.println("\t10)");
 	    System.out.println("\t11)");
@@ -78,39 +78,39 @@ public class Contrincante{
 		break;
 
 		case 3:
-		    monstruoNuevo = new ();
+		    monstruoNuevo = new Pikachu();
 		break;
 
 		case 4:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new Bobomb();
 		break;
 
 		case 5:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new Bomberman();
 		break;
 
 		case 6:
-		    mostruoNuevo = new();
+		    mostruoNuevo = new Chichou();
 		break;
 
 		case 7:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new Snorunt();
 		break;
 
 		case 8:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new Wynaut();
 		break;
 
 		case 9:
-		    monstuoNuevo = new();
+		    monstuoNuevo = new ();
 		break;
 
 		case 9:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new ();
 		break;
 
 		case 10:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new ();
 		break;
 
 		case 11:
