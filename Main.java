@@ -69,8 +69,7 @@ public class Main{
     }
 
     private static void iniciarJuego(){
-    }
-    private static void cicloJuego( Contrincante c1, Contrincante c2 ){
+	
     }
 
     private static int leerOpcion(){
@@ -93,25 +92,5 @@ public class Main{
 	
 	return leido;
     }
-    private static ArrayList<Contrincante> leerUsuarios(){
-	ArrayList<Contrincante> usuarios_leidos = new ArrayList<>();
-	File arch_usuarios = new File(ARCHIVO_USUARIOS);
-
-	System.out.println("Ahora vamos a cargar los usuarios guardados");
-
-	try{
-	    FileReader fr = new FileReader( arch_usuarios );
-	    BufferedReader br = new BufferedReader( fr );
-
-	    fr.close();
-	    br.close();
-	}catch(IOException e){
-	    System.out.println("No se han leido usuarios");
-	    sc.nextLine();
-	}
-
-	return usuarios_leidos;
-    }
-
 }
 
