@@ -19,7 +19,7 @@ import java.io.File;
  * @author paco 
  * @author saul
 */
-public class Bomberman extends Bomberman{
+public class Bomberman extends MonstruoFuego{
 //    public void ataque2(Monstruo objetivo){}
 
 	public Bomberman(
@@ -55,10 +55,10 @@ public class Bomberman extends Bomberman{
 		int danio = 0;
 		byte tipoDanio = 0;
 
-		if( (int)(Math.random()*2) != 0 ){ // 50% probabilidad de acertar
+		if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
 		    danio = (this.getAtaque() - enemigo.getDefensa());
 		    danio *= this.multiplicadorElemental( enemigo );
-		    if( (int)(Math.random()*10) == 0 ){ // 5% de golpe crItico
+		    if( (int)(Math.random()*10) == 0 ){ // 8% de golpe crItico
 				danio *= 2;
 				tipoDanio = 2;
 		    }else{
@@ -68,9 +68,9 @@ public class Bomberman extends Bomberman{
 		    tipoDanio = 0;
 		}
 
-		enemigo.recibirDanio( (int)(danio*2) );
+		enemigo.recibirDanio( (int)(danio*1.4) );
 		enemigo.animarDanio( tipoDanio );
-		return (int)(danio*2);
+		return (int)(danio*1.4);
     }
 
 }

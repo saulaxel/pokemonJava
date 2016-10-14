@@ -19,19 +19,19 @@ import java.io.File;
  * @author paco 
  * @author saul
 */
-public class Bobomb extends MonstruoFuego{
+public class Diglet extends MonstruoHierba{
 //    public void ataque2(Monstruo objetivo){}
 
-	public Bobomb(
+	public Diglet(
 	    String apodo,
 	    byte nivel
 	){ 
 		super(
-			new File("./monstruos_ascii/pokemon8.txt"),
-			19,
-			14,
-			16,
+			new File("./monstruos_ascii/pokemon10.txt"),
+			22,
 			15,
+			17,
+			18,
 			apodo,
 			nivel
 			);
@@ -40,7 +40,7 @@ public class Bobomb extends MonstruoFuego{
 	public void ataque2(Monstruo enemigo){
 		int danioInfringido;
 
-		System.out.println("¡" + this.apodo + " realiza incendio");
+		System.out.println("¡" + this.apodo + " realiza tirar tierra");
 		danioInfringido = causarDanio2( enemigo );
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
@@ -68,9 +68,9 @@ public class Bobomb extends MonstruoFuego{
 		    tipoDanio = 0;
 		}
 
-		enemigo.recibirDanio( (int)(danio*1.7) );
+		enemigo.recibirDanio( (int)(danio*1.6) );
 		enemigo.animarDanio( tipoDanio );
-		return (int)(danio*1.7);
+		return (int)(danio*1.6);
     }
 
 }

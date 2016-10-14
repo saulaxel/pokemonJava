@@ -19,19 +19,19 @@ import java.io.File;
  * @author paco 
  * @author saul
 */
-public class Bobomb extends MonstruoFuego{
+public class Star extends MonstruoElectrico{
 //    public void ataque2(Monstruo objetivo){}
 
-	public Bobomb(
+	public Star(
 	    String apodo,
 	    byte nivel
 	){ 
 		super(
-			new File("./monstruos_ascii/pokemon8.txt"),
-			19,
-			14,
-			16,
+			new File("./monstruos_ascii/pokemon13.txt"),
+			22,
 			15,
+			16,
+			20,
 			apodo,
 			nivel
 			);
@@ -40,7 +40,7 @@ public class Bobomb extends MonstruoFuego{
 	public void ataque2(Monstruo enemigo){
 		int danioInfringido;
 
-		System.out.println("¡" + this.apodo + " realiza incendio");
+		System.out.println("¡" + this.apodo + " realiza supernova");
 		danioInfringido = causarDanio2( enemigo );
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
@@ -55,11 +55,11 @@ public class Bobomb extends MonstruoFuego{
 		int danio = 0;
 		byte tipoDanio = 0;
 
-		if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
+		if( (int)(Math.random()*20) != 0 ){ // 5% probabilidad de acertar
 		    danio = (this.getAtaque() - enemigo.getDefensa());
 		    danio *= this.multiplicadorElemental( enemigo );
-		    if( (int)(Math.random()*10) == 0 ){ // 8% de golpe crItico
-				danio *= 2;
+		    if( (int)(Math.random()*1) == 0 ){ // Siempre es golpe crItico
+				//danio *= 2;
 				tipoDanio = 2;
 		    }else{
 				tipoDanio = 1;
@@ -68,9 +68,8 @@ public class Bobomb extends MonstruoFuego{
 		    tipoDanio = 0;
 		}
 
-		enemigo.recibirDanio( (int)(danio*1.7) );
+		enemigo.recibirDanio( (int)(danio*100) );
 		enemigo.animarDanio( tipoDanio );
-		return (int)(danio*1.7);
+		return (int)(danio*100);
     }
-
 }

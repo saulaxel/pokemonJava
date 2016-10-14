@@ -27,7 +27,7 @@ public class Chinchou extends MonstruoAgua{
 	    byte nivel
 	){ 
 		super(
-			new File("./monstruos_ascii/pokemon5.txt"),
+			new File("./monstruos_ascii/pokemon4.txt"),
 			22,
 			15,
 			16,
@@ -55,10 +55,10 @@ public class Chinchou extends MonstruoAgua{
 		int danio = 0;
 		byte tipoDanio = 0;
 
-		if( (int)(Math.random()*2) != 0 ){ // 50% probabilidad de acertar
+		if( (int)(Math.random()*5) != 0 ){ // 80% probabilidad de acertar
 		    danio = (this.getAtaque() - enemigo.getDefensa());
 		    danio *= this.multiplicadorElemental( enemigo );
-		    if( (int)(Math.random()*10) == 0 ){ // 5% de golpe crItico
+		    if( (int)(Math.random()*10) == 0 ){ // 8% de golpe crItico
 				danio *= 2;
 				tipoDanio = 2;
 		    }else{
