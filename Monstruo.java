@@ -198,52 +198,52 @@ public abstract class Monstruo{
      * @return Multiplicador que puede tener valor de 0.5, 1 o 2
      */
     protected double multiplicadorElemental( Monstruo objetivo ){
-	if( this.getTipo().compareTo("fuego") == 0 ){
-	    if( objetivo.getTipo().compareTo("hierba")  == 0){
-		return 2;
-	    }else if( 
-		    objetivo.getTipo().compareTo("agua") == 0 || 
-		    objetivo.getTipo().compareTo("fuego") == 0
-	    ){
-		return 0.5;
-	    }else{
-		return 1;
-	    } 
-	}else if( this.TIPO.compareTo("agua") == 0 ){
-	    if( objetivo.getTipo().compareTo("fuego") == 0 ){
-		return 2;
-	    }else if( 
-		    objetivo.getTipo().compareTo("agua") == 0 || 
-		    objetivo.getTipo().compareTo("hierba") == 0
-	    ){
-		return 0.5;
-	    }else{
-		return 1;
-	    } 
-	}else if( this.TIPO.compareToIgnoreCase("hierva") == 0 ){
-	    if( objetivo.getTipo().compareTo("agua") == 0 ){
-		return 2;
-	    }else if( 
-		    objetivo.getTipo().compareTo("hierba") == 0 ||
-		    objetivo.getTipo().compareTo("fuego") == 0
-	    ){
-		return 0.5;
-	    }else{
-		return 1;
-	    } 
-	}else if( this.TIPO.compareToIgnoreCase("electrico") == 0 ){
-	    if( objetivo.getTipo().compareTo("agua") == 0 ){
-		return 2;
-	    }else if( 
-		    objetivo.getTipo().compareTo("hierba") == 0 ||
-		    objetivo.getTipo().compareTo("electrico") == 0
-	    ){
-		return 0.5;
-	    }else{
-		return 1;
-	    } 
-	}
-	return -1; // No conosco este nuevo tipo de Monstruo 
+		if( this.getTipo().compareTo("fuego") == 0 ){
+		    if( objetivo.getTipo().compareTo("hierba")  == 0){
+			return 2;
+		    }else if( 
+			    objetivo.getTipo().compareTo("agua") == 0 || 
+			    objetivo.getTipo().compareTo("fuego") == 0
+		    ){
+			return 0.5;
+		    }else{
+			return 1;
+		    } 
+		}else if( this.TIPO.compareTo("agua") == 0 ){
+		    if( objetivo.getTipo().compareTo("fuego") == 0 ){
+			return 2;
+		    }else if( 
+			    objetivo.getTipo().compareTo("agua") == 0 || 
+			    objetivo.getTipo().compareTo("hierba") == 0
+		    ){
+			return 0.5;
+		    }else{
+			return 1;
+		    } 
+		}else if( this.TIPO.compareToIgnoreCase("hierva") == 0 ){
+		    if( objetivo.getTipo().compareTo("agua") == 0 ){
+			return 2;
+		    }else if( 
+			    objetivo.getTipo().compareTo("hierba") == 0 ||
+			    objetivo.getTipo().compareTo("fuego") == 0
+		    ){
+			return 0.5;
+		    }else{
+			return 1;
+		    } 
+		}else if( this.TIPO.compareToIgnoreCase("electrico") == 0 ){
+		    if( objetivo.getTipo().compareTo("agua") == 0 ){
+			return 2;
+		    }else if( 
+			    objetivo.getTipo().compareTo("hierba") == 0 ||
+			    objetivo.getTipo().compareTo("electrico") == 0
+		    ){
+			return 0.5;
+		    }else{
+			return 1;
+		    } 
+		}
+		return -1; // No conosco este nuevo tipo de Monstruo 
     }
 
     /**
