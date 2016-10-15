@@ -68,57 +68,60 @@ public class Contrincante{
 	    System.out.println("Ingrese el apodo de su nuevo pokemon");
 	    String apodo = sc.nextLine();
 
+	    int nivel;
+	    nivel = (int) (Math.random()*10 + 50);
+
 	    switch( eleccion ){
 		case 1:
-		    monstruoNuevo = new Electrode();	
+		    monstruoNuevo = new Electrode(apodo,nivel);	
 		break;
 
 		case 2:
-		    monstruoNuevo = new Gato();
+		    monstruoNuevo = new Gato(apodo,nivel);
 		break;
 
 		case 3:
-		    monstruoNuevo = new Pikachu();
+		    monstruoNuevo = new Pikachu(apodo,nivel);
 		break;
 
 		case 4:
-		    monstruoNuevo = new Bobomb();
+		    monstruoNuevo = new Bobomb(apodo,nivel);
 		break;
 
 		case 5:
-		    monstruoNuevo = new Bomberman();
+		    monstruoNuevo = new Bomberman(apodo,nivel);
 		break;
 
 		case 6:
-		    mostruoNuevo = new Chichou();
+		    mostruoNuevo = new Chichou(apodo,nivel);
 		break;
 
 		case 7:
-		    monstruoNuevo = new Snorunt();
+		    monstruoNuevo = new Snorunt(apodo,nivel);
 		break;
 
 		case 8:
-		    monstruoNuevo = new Wynaut();
+		    monstruoNuevo = new Wynaut(apodo,nivel);
 		break;
 
 		case 9:
-		    monstuoNuevo = new ();
+		    monstuoNuevo = new (apodo,nivel);
 		break;
 
 		case 9:
-		    monstruoNuevo = new ();
+		    monstruoNuevo = new (apodo,nivel);
 		break;
 
 		case 10:
-		    monstruoNuevo = new ();
+		    monstruoNuevo = new (apodo,nivel);
 		break;
 
 		case 11:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new (apodo,nivel);
 		break;
 
 		case 12:
-		    monstruoNuevo = new();
+		    monstruoNuevo = new (apodo,nivel);
 		break;
 	    }
 	    
@@ -131,6 +134,34 @@ public class Contrincante{
     }
 
     protected Monstruo elegirMonstruo(){
-	for( Monstruo m: 
+	Scanner sc = new Scanner();
+	int i = 1;
+	System.out.println("Tus monstruos son: ");
+	for( Monstruo m: monstruos ){
+	    System.out.println(i + ") " + m.getClass().getName());     
+	    ++i;
+	} 
+	System.out.println("Elije el número de tu monstruo");
+	boolean b = true;
+	int pos;
+	do{
+	    System.out.println("> ");
+	    try{
+		pos = sc.nextLine();
+		if( pos >=1 && pos <= 6 ){
+		    b = false;    
+		}
+	    }catch(InputMismatchException ime){}
+	}while(b);
+
+	int i = 1;
+	for( Monstruo m: monstruo ){
+	    if( i == pos ){
+		int index = monstruos.indexOf(m);
+		return monstruos.get(index);
+	    }
+	    ++i;
+	}
+	
     }
 }
