@@ -162,7 +162,7 @@ public class Torneo{
 	c.mostrarMonstruos();
 	System.out.println("¿Qué monstruo desea usar?");
 		
-	int index = 0;;
+	int index = 0;
 	boolean bandera = true;
 	do{
 	    System.out.print("> ");
@@ -174,6 +174,7 @@ public class Torneo{
 	    }catch(Exception ime){}
 	}while(bandera);
 	enUso[contrincante] = c.monstruos.get(index - 1);
+	c.monstruos.remove(index -1);
 	System.out.println("Has elegido a: \n\n" + enUso[contrincante] + "\n");
     }
 
