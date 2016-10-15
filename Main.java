@@ -68,13 +68,22 @@ public class Main{
 
     private static void iniciarJuego(){
 	Torneo t; 
-	Contrincante c1, c2;
+	Contrincante c1, c2, ganador;
 	System.out.println("Ingrese los datos del primer contrincante:");
 	c1 = new Contrincante();
 	System.out.println("Ingrese los datos del segundo contrincante:");
 	c2 = new Contrincante();
 	t = new Torneo(c1, c2);
-	t.jugar();
+	ganador = t.jugar();
+
+	System.out.println("Feliciaciones, has ganado este combate");
+	System.out.println("Recibirás puntos por cada pokemón que te quedó vivo");
+	for( equipo.Monstruo m: ganador.monstruos ){
+	    System.out.println(equipo.Monstruo.SALTOS);
+	    System.out.println(m);
+	    System.out.println("\t\t ¡+100 Puntos!");
+	    try{ Thread.sleep(300); }catch(Exception e){}
+	}
     }
 
     private static int leerOpcion(){

@@ -205,6 +205,7 @@ public class Contrincante{
 	    clase = p.getClass().getName();
 	    clase = clase.substring(clase.lastIndexOf('-') +1 );
 	    System.out.println(i + ") " + clase);
+	    ++i;
 	}
     }
 }
