@@ -26,13 +26,13 @@ public class PocimaAtaque extends Pocima{
 		super("ataque");
     }
 
-    public void usarPocima(Monstruo objetivo){
-    	anterior = objetivo.ataque;
+    public void usarPocima(equipo.Monstruo objetivo){
+    	anterior = objetivo.getAtaque();
     	objetivo.recibirAtaque();
     	System.out.println("El ataque de " + 
-    		objetivo.apodo + 
+    		objetivo.getApodo() + 
     		" se incrementó " + 
-    		((objetivo.ataque)-anterior) + 
+    		((objetivo.getAtaque())-anterior) + 
     		" puntos.");
     }
 }

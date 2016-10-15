@@ -26,12 +26,12 @@ public class PocimaVida extends Pocima{
 		super("vida");
     }
 
-    public void usarPocima(Monstruo objetivo){
-    	anterior = objetivo.hp;
+    public void usarPocima(equipo.Monstruo objetivo){
+    	anterior = objetivo.getHp();
     	objetivo.recibirHp();
-    	System.out.println(objetivo.apodo + 
+    	System.out.println(objetivo.getApodo() + 
     		" recuperó " + 
-    		((objetivo.hp)-anterior) + 
+    		((objetivo.getHp())-anterior) + 
     		" puntos de vida.");
     }
 }

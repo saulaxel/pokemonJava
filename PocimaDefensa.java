@@ -26,13 +26,13 @@ public class PocimaDefensa extends Pocima{
 		super("defensa");
     }
 
-    public void usarPocima(Monstruo objetivo){
-    	anterior = objetivo.defensa;
+    public void usarPocima(equipo.Monstruo objetivo){
+    	anterior = objetivo.getDefensa();
     	objetivo.recibirDefensa();
     	System.out.println("La defensa de " + 
-    		objetivo.apodo + 
+    		objetivo.getApodo() + 
     		" se incrementó " + 
-    		((objetivo.ataque)-anterior) + 
+    		((objetivo.getDefensa())-anterior) + 
     		" puntos.");
     }
 }

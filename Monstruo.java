@@ -172,7 +172,7 @@ public abstract class Monstruo{
     /**
      * Método recibirHp llamado cuando se usa una pocién
      */
-    protected void recibirHp(){
+    public void recibirHp(){
 		hp += (HP_BASE * nivel) * AUMENTO_HP;
 		if(hp >= (HP_BASE * nivel)){
 			hp = (HP_BASE * nivel);
@@ -183,14 +183,14 @@ public abstract class Monstruo{
     /**
      * Método recibirAtaque llamado cuando se usa una poción
      */
-    protected void recibirAtaque(){
+    public void recibirAtaque(){
 		ataque += (ataque * AUMENTO_ATAQUE); 
     }
 
     /**
      * Método recibirDefensa llamado cuando se usa una poción
      */
-    protected void recibirDefensa(){
+    public void recibirDefensa(){
 		defensa += (defensa * AUMENTO_DEFENSA);
     }
 

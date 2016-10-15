@@ -19,6 +19,7 @@
  * @author paco 
  * @author saul
 */
+import equipo.*;
 public abstract class Pocima{
     protected String tipo_pocima;
 
@@ -26,5 +27,5 @@ public abstract class Pocima{
 		this.tipo_pocima = tipo_pocima;
     }
 
-    protected abstract void usarPocima(Monstruo objetivo);
+    protected abstract void usarPocima(equipo.Monstruo objetivo);
 }
