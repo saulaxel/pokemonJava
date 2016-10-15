@@ -19,13 +19,19 @@
  * @author paco 
  * @author saul
 */
-import equipo.*;
-public abstract class Pocima{
-    protected String tipo_pocima;
+public class PocimaVida extends Pocima{
+    protected int anterior;
 
-    public Pocima(String tipo_pocima){
-		this.tipo_pocima = tipo_pocima;
+    public PocimaVida(){
+		super("vida");
     }
 
-    protected abstract void usarPocima(equipo.Monstruo objetivo);
+    public void usarPocima(equipo.Monstruo objetivo){
+    	anterior = objetivo.getHp();
+    	objetivo.recibirHp();
+    	System.out.println(objetivo.getApodo() + 
+    		" recuperó " + 
+    		((objetivo.getHp())-anterior) + 
+    		" puntos de vida.");
+    }
 }

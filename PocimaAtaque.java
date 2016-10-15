@@ -19,13 +19,20 @@
  * @author paco 
  * @author saul
 */
-import equipo.*;
-public abstract class Pocima{
-    protected String tipo_pocima;
+public class PocimaAtaque extends Pocima{
+    protected int anterior;
 
-    public Pocima(String tipo_pocima){
-		this.tipo_pocima = tipo_pocima;
+    public PocimaAtaque(){
+		super("ataque");
     }
 
-    protected abstract void usarPocima(equipo.Monstruo objetivo);
+    public void usarPocima(equipo.Monstruo objetivo){
+    	anterior = objetivo.getAtaque();
+    	objetivo.recibirAtaque();
+    	System.out.println("El ataque de " + 
+    		objetivo.getApodo() + 
+    		" se incrementó " + 
+    		((objetivo.getAtaque())-anterior) + 
+    		" puntos.");
+    }
 }
