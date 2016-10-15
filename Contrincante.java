@@ -14,6 +14,7 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 /**
  * Clase Contrincante que representa un jugador y sus monstruos así
@@ -26,7 +27,7 @@ public class Contrincante{
     protected ArrayList<Pocima> pocimas;
     String nombre;
 
-    public contrincante(){
+    public Contrincante(){
 	int i;
 	Scanner sc = new Scanner( System.in );
 
@@ -38,7 +39,7 @@ public class Contrincante{
 	monstruos = new ArrayList<Monstruo>();
 	pocimas = new ArrayList<Pocima>();
 
-	Monstruo monstruoNuevo;
+	Monstruo monstruoNuevo = new monstruoRaro(); // si no la inicializo a algo chilla
 	for( i = 1; i < 6; ++i ){
 	    int eleccion = 0;
 	    System.out.println("\t 1) Electrode");
@@ -49,13 +50,13 @@ public class Contrincante{
 	    System.out.println("\t 6) Chinchou");
 	    System.out.println("\t 7) Snorunt");
 	    System.out.println("\t 8) Wynaut");
-	    System.out.println("\t 9)");
-	    System.out.println("\t10)");
-	    System.out.println("\t11)");
-	    System.out.println("\t12)");
+	    System.out.println("\t 9) Diglet");
+	    System.out.println("\t10) Star");
+	    System.out.println("\t11) Toad");
+	    System.out.println("\t12) Underdog");
 	    
+	    boolean b = true;
 	    do{
-		boolean b = true;
 		System.out.print("> ");
 		try{
 		    eleccion = sc.nextInt();
@@ -68,8 +69,8 @@ public class Contrincante{
 	    System.out.println("Ingrese el apodo de su nuevo pokemon");
 	    String apodo = sc.nextLine();
 
-	    int nivel;
-	    nivel = (int) (Math.random()*10 + 50);
+	    byte nivel;
+	    nivel = (byte) (Math.random()*10 + 50);
 
 	    switch( eleccion ){
 		case 1:
@@ -93,7 +94,7 @@ public class Contrincante{
 		break;
 
 		case 6:
-		    mostruoNuevo = new Chichou(apodo,nivel);
+		    monstruoNuevo = new Chinchou(apodo,nivel);
 		break;
 
 		case 7:
@@ -105,26 +106,21 @@ public class Contrincante{
 		break;
 
 		case 9:
-		    monstuoNuevo = new (apodo,nivel);
-		break;
-
-		case 9:
-		    monstruoNuevo = new (apodo,nivel);
+		    monstruoNuevo = new Diglet(apodo,nivel);
 		break;
 
 		case 10:
-		    monstruoNuevo = new (apodo,nivel);
+		    monstruoNuevo = new Star(apodo,nivel);
 		break;
 
 		case 11:
-		    monstruoNuevo = new (apodo,nivel);
+		    monstruoNuevo = new Toad(apodo,nivel);
 		break;
 
 		case 12:
-		    monstruoNuevo = new (apodo,nivel);
+		    monstruoNuevo = new Underdog(apodo,nivel);
 		break;
 	    }
-	    
 	    monstruos.add(monstruoNuevo);
 	}
     }
@@ -134,7 +130,7 @@ public class Contrincante{
     }
 
     protected Monstruo elegirMonstruo(){
-	Scanner sc = new Scanner();
+	Scanner sc = new Scanner( System.in );
 	int i = 1;
 	System.out.println("Tus monstruos son: ");
 	for( Monstruo m: monstruos ){
@@ -143,25 +139,26 @@ public class Contrincante{
 	} 
 	System.out.println("Elije el número de tu monstruo");
 	boolean b = true;
-	int pos;
+	int pos = 0;
 	do{
 	    System.out.println("> ");
 	    try{
-		pos = sc.nextLine();
+		pos = sc.nextInt();
 		if( pos >=1 && pos <= 6 ){
 		    b = false;    
 		}
 	    }catch(InputMismatchException ime){}
 	}while(b);
 
-	int i = 1;
-	for( Monstruo m: monstruo ){
+	i = 1; 
+	int index = 0;
+	for( Monstruo m: monstruos ){
 	    if( i == pos ){
-		int index = monstruos.indexOf(m);
-		return monstruos.get(index);
+		index = monstruos.indexOf(m);
 	    }
 	    ++i;
 	}
-	
+
+	return monstruos.get(index);
     }
 }
