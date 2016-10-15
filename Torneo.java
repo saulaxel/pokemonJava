@@ -97,17 +97,17 @@ public class Torneo{
 		switch( opcion ){
 		    case 1:
 			if( contrincante == 0 ){
-			    enUso[1].ataque1(enUso[2]);
+			    enUso[0].ataque1(enUso[1]);
 			}else{
-			    enUso[2].ataque1(enUso[1]);
+			    enUso[1].ataque1(enUso[0]);
 			}
 		    break;
 
 		    case 2:
 			if( contrincante == 0 ){
-			    enUso[1].ataque2(enUso[2]);
+			    enUso[0].ataque2(enUso[1]);
 			}else{
-			    enUso[2].ataque2(enUso[1]);
+			    enUso[1].ataque2(enUso[0]);
 			}
 		    break;
 
@@ -121,6 +121,23 @@ public class Torneo{
 		System.out.println("No hay turno para tu monstruo paralizado");
 	    }
 
+	    if( enUso[0].getEstado().compareTo("fuera de combate") == 0 ){
+		System.out.println("El pokemon del jugador 1 ha caido");
+		enUso[0] = null;
+	    }
+	    if( enUso[1].getEstado().compareTo("fuera de combate") == 0 ){
+		System.out.println("El pokemon del jugador 2 ha caido");
+		enUso[1] = null;
+	    }
+
+	    if( c1.monstruos.size() == 0 ){
+		contrincante = 1;
+		hayGanador = true;
+	    }
+	    if( c2.monstruos.size() == 0 ){
+		contrincante = 1;
+		hayGanador = true;
+	    }
 	    ++i;
 	}while( !hayGanador );
 	
@@ -152,7 +169,7 @@ public class Torneo{
 	    }catch(Exception ime){}
 	}while(bandera);
 	enUso[contrincante] = c.monstruos.get(index - 1);
-	System.out.println("Has elegido a: " + enUso[contrincante]);
+	System.out.println("Has elegido a: " + enUso[contrincante] + "\n");
     }
 
     private void imprimirMenu(){
