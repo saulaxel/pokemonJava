@@ -12,7 +12,7 @@
  * Recursos o fuentes:
 
  */
-
+package equipo;
 //import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
@@ -42,9 +42,9 @@ public abstract class Monstruo{
     
     // Tazas de aumento de atributos que otorgan las pociones
     //  aun por definir
-    public final double AUMENTO_HP = 0.2; // 20% 
-    public final double AUMENTO_ATAQUE =  0.10; // 10% 
-    public final double AUMENTO_DEFENSA = 0.15; // 15%
+    public static final double AUMENTO_HP = 0.2; // 20% 
+    public static final double AUMENTO_ATAQUE =  0.10; // 10% 
+    public static final double AUMENTO_DEFENSA = 0.15; // 15%
 
     // Cadenas para aplicar formato de impresiOn
     protected static final String  ESPACIO = r(" ",25); 
@@ -64,15 +64,15 @@ public abstract class Monstruo{
     // Constructores
     public static int numGenericos = 0;
     public Monstruo( String tipo ) {
-	this.nombre = this.getClass().getName();
-	++numGenericos;
-	this.TIPO = tipo;
-	this.ARCHIVO_TARJETA = new File(
-		"./monstruos_ascii/pokemon"+
-		(int)(Math.random()*14+1)+".txt"
-	);
-	String tarjetaMonstruo = "";
-	try{
+		this.nombre = this.getClass().getName();
+		++numGenericos;
+		this.TIPO = tipo;
+		this.ARCHIVO_TARJETA = new File(
+			"./monstruos_ascii/pokemon"+
+			(int)(Math.random()*14+1)+".txt"
+		);
+		String tarjetaMonstruo = "";
+		try{
 	    FileReader fr = new FileReader( ARCHIVO_TARJETA );
 	    BufferedReader br = new BufferedReader( fr );
 
@@ -82,21 +82,21 @@ public abstract class Monstruo{
 	    }
 	    fr.close();
 	    br.close();
-	}catch(FileNotFoundException fnfe){
-	    System.out.println("Tarjeta de monstruo no encontrada");    
-	}catch(IOException ioe){
-	    System.out.println("Error al leer la tarjeta de monstruo");   
-	}
-	TARJETA = tarjetaMonstruo;
+		}catch(FileNotFoundException fnfe){
+		    System.out.println("Tarjeta de monstruo no encontrada");    
+		}catch(IOException ioe){
+		    System.out.println("Error al leer la tarjeta de monstruo");   
+		}
+		TARJETA = tarjetaMonstruo;
 
-	this.HP_BASE = 15 + (int)(Math.random()*11);
-	this.ATAQUE_BASE = 10 + (int)(Math.random()*11);
-	this.DEFENSA_BASE = 10 + (int)(Math.random()*11);
-	this.VELOCIDAD_BASE = 10 + (int)(Math.random()*11);
-	this.apodo = "Pokemon genérico " + numGenericos;
-	this.nivel = 1;
-	this.estado = "ok";
-	this.expNecesaria = 100;
+		this.HP_BASE = 15 + (int)(Math.random()*11);
+		this.ATAQUE_BASE = 10 + (int)(Math.random()*11);
+		this.DEFENSA_BASE = 10 + (int)(Math.random()*11);
+		this.VELOCIDAD_BASE = 10 + (int)(Math.random()*11);
+		this.apodo = "Pokemon genérico " + numGenericos;
+		this.nivel = 1;
+		this.estado = "ok";
+		this.expNecesaria = 100;
     }
 
     public Monstruo(
@@ -109,36 +109,36 @@ public abstract class Monstruo{
 	    String apodo,
 	    byte nivel
     ){ 
-	this.nombre = this.getClass().getName();
-	this.TIPO = tipo;
-	this.ARCHIVO_TARJETA = archTarjeta;
+		this.nombre = this.getClass().getName();
+		this.TIPO = tipo;
+		this.ARCHIVO_TARJETA = archTarjeta;
 
-	String tarjetaMonstruo = "";
-	try{
-	    FileReader fr = new FileReader( ARCHIVO_TARJETA );
-	    BufferedReader br = new BufferedReader( fr );
+		String tarjetaMonstruo = "";
+		try{
+		    FileReader fr = new FileReader( ARCHIVO_TARJETA );
+		    BufferedReader br = new BufferedReader( fr );
 
-	    br.readLine(); 
-	    for( int i = 2; i <= 17; ++i ){
-		tarjetaMonstruo += ESPACIO + br.readLine() + "\n";
-	    }
-	    fr.close();
-	    br.close();
-	}catch(FileNotFoundException fnfe){
-	    System.out.println("Tarjeta de monstruo no encontrada");    
-	}catch(IOException ioe){
-	    System.out.println("Error al leer la tarjeta de monstruo");   
-	}
-	TARJETA = tarjetaMonstruo;
+		    br.readLine(); 
+		    for( int i = 2; i <= 17; ++i ){
+			tarjetaMonstruo += ESPACIO + br.readLine() + "\n";
+		    }
+		    fr.close();
+		    br.close();
+		}catch(FileNotFoundException fnfe){
+		    System.out.println("Tarjeta de monstruo no encontrada");    
+		}catch(IOException ioe){
+		    System.out.println("Error al leer la tarjeta de monstruo");   
+		}
+		TARJETA = tarjetaMonstruo;
 
-	this.HP_BASE = hpBase;
-	this.ATAQUE_BASE = hpBase;
-	this.DEFENSA_BASE = defBase;
-	this.VELOCIDAD_BASE = velBase;
-	this.apodo = apodo;
-	this.nivel = nivel;
-	this.estado = "ok";
-	this.expNecesaria = 100 * nivel;
+		this.HP_BASE = hpBase;
+		this.ATAQUE_BASE = hpBase;
+		this.DEFENSA_BASE = defBase;
+		this.VELOCIDAD_BASE = velBase;
+		this.apodo = apodo;
+		this.nivel = nivel;
+		this.estado = "ok";
+		this.expNecesaria = 100 * nivel;
     }
 
     // MEtodos
@@ -148,11 +148,11 @@ public abstract class Monstruo{
      * valores del monstruo que lo invoca
      */
     protected void inicializar(){
-	this.hp = HP_BASE * nivel;
-	this.ataque = ATAQUE_BASE * nivel;
-	this.defensa = DEFENSA_BASE * nivel;
-	this.velocidad = VELOCIDAD_BASE * nivel;
-	this.estado = "ok";
+		this.hp = HP_BASE * nivel;
+		this.ataque = ATAQUE_BASE * nivel;
+		this.defensa = DEFENSA_BASE * nivel;
+		this.velocidad = VELOCIDAD_BASE * nivel;
+		this.estado = "ok";
     }
 
     /**
@@ -161,34 +161,37 @@ public abstract class Monstruo{
      * @param danio Daño que le propina el monstruo adversario
      */
     protected void recibirDanio( int danio ){
-	if(danio < 0){ danio = 0; }
-	this.hp -= danio;
-	if( this.hp <= 0 ){
-	    System.out.println("El monstruo está fuera de combate");
-	    this.estado = "fuera de combate";    
-	}
+		if(danio < 0){ danio = 0; }
+		this.hp -= danio;
+		if( this.hp <= 0 ){
+		    System.out.println("El monstruo está fuera de combate");
+		    this.estado = "fuera de combate";    
+		}
     }
 
     /**
      * Método recibirHp llamado cuando se usa una pocién
      */
     protected void recibirHp(){
-	hp += (HP_BASE * nivel) * AUMENTO_HP;
-	animarDanio( (byte) -1 );
+		hp += (HP_BASE * nivel) * AUMENTO_HP;
+		if(hp >= (HP_BASE * nivel)){
+			hp = (HP_BASE * nivel);
+		}
+		animarDanio( (byte) -1 );
     }
 
     /**
      * Método recibirAtaque llamado cuando se usa una poción
      */
     protected void recibirAtaque(){
-	ataque += (ataque * AUMENTO_ATAQUE); 
+		ataque += (ataque * AUMENTO_ATAQUE); 
     }
 
     /**
      * Método recibirDefensa llamado cuando se usa una poción
      */
     protected void recibirDefensa(){
-	defensa += (defensa * AUMENTO_DEFENSA);
+		defensa += (defensa * AUMENTO_DEFENSA);
     }
 
     /**
@@ -286,17 +289,17 @@ public abstract class Monstruo{
      * para acerse acreedor de experiencia
      */
     protected void recibirExperiencia( Monstruo vencido ){
-	// Se recibe 100 por un Monstruo nivel 1, 150 por el nivel 2
-	//  200 por el nivel 3 etc..
-	expNecesaria -= (vencido.nivel * 50 + 50);
-	//Si la expNecesarioa es menor a 0 se pasa de nivel
-	if( expNecesaria <= 0 ){
-	    subirNivel();
-	    System.out.println("Felicitaciones, tu " +
-		    nombre + ": \"" + apodo + "\"" +
-		    " ha subido al nivel: " + nivel
-	    );
-	}
+		// Se recibe 100 por un Monstruo nivel 1, 150 por el nivel 2
+		//  200 por el nivel 3 etc..
+		expNecesaria -= (vencido.nivel * 50 + 50);
+		//Si la expNecesarioa es menor a 0 se pasa de nivel
+		if( expNecesaria <= 0 ){
+		    subirNivel();
+		    System.out.println("Felicitaciones, tu " +
+			    nombre + ": \"" + apodo + "\"" +
+			    " ha subido al nivel: " + nivel
+		    );
+		}
     }
 
     /**
@@ -304,16 +307,16 @@ public abstract class Monstruo{
      * subir de nivel
      */
     protected void subirNivel(){
-	++nivel;
-	expNecesaria += 100*nivel;
-	ataque = ATAQUE_BASE * nivel;
-	defensa = DEFENSA_BASE * nivel;
-	velocidad = VELOCIDAD_BASE * nivel;
-	if( expNecesaria <= 0){ subirNivel(); } // Ya saben, por si acaso
-						// un monstruo lv uno mata
-						// a uno lv 100 y empieza
-						// a subir niveles a lo 
-						// loco
+		++nivel;
+		expNecesaria += 100*nivel;
+		ataque = ATAQUE_BASE * nivel;
+		defensa = DEFENSA_BASE * nivel;
+		velocidad = VELOCIDAD_BASE * nivel;
+		if( expNecesaria <= 0){ subirNivel(); } // Ya saben, por si acaso
+							// un monstruo lv uno mata
+							// a uno lv 100 y empieza
+							// a subir niveles a lo 
+							// loco
     } 
 
     // MEtodos abstractos para definir en la descendencia
@@ -324,14 +327,8 @@ public abstract class Monstruo{
     public String getTipo(){
 	return this.TIPO;
     }
-    public void setHp( int hp ){
-	this.hp = hp;
-    }
     public int getHp(){
 	return this.hp;
-    }
-    public void setApodo( String apodo ){
-	this.apodo = apodo;
     }
     public String getApodo(){
 	return this.apodo;
@@ -415,35 +412,35 @@ public abstract class Monstruo{
      * se le aplica al monstruo
      */
     protected void animarDanio( byte tipoAtaque ){
-	String cadenaMonstruo = ARRIBA + TARJETA + ABAJO;
-	String tarjetaDanio;
-	int i;
+		String cadenaMonstruo = ARRIBA + TARJETA + ABAJO;
+		String tarjetaDanio;
+		int i;
 
-	if( tipoAtaque == 1 ){
-	    tarjetaDanio = DANIO_NORMAL;
-	}else if( tipoAtaque == 2 ){
-	    tarjetaDanio = DANIO_CRITICO;    
-	}else if( tipoAtaque == -1 ){
-	    // El daño negativo es la curaciOn :D
-	    tarjetaDanio = CURACION;
-	}else{
-	    tarjetaDanio = DANIO_MINIMO;   
-	}
+		if( tipoAtaque == 1 ){
+		    tarjetaDanio = DANIO_NORMAL;
+		}else if( tipoAtaque == 2 ){
+		    tarjetaDanio = DANIO_CRITICO;    
+		}else if( tipoAtaque == -1 ){
+		    // El daño negativo es la curaciOn :D
+		    tarjetaDanio = CURACION;
+		}else{
+		    tarjetaDanio = DANIO_MINIMO;   
+		}
 
-	try{
-	    for( i = 1; i <= 8; ++i ){
-		System.out.println(SALTOS);
-		System.out.println(cadenaMonstruo);
-		Thread.sleep(120);
-		System.out.println(SALTOS);
-		System.out.println(tarjetaDanio);
-		Thread.sleep(120);
-	    }
-	}catch(InterruptedException ie){
-	    System.out.println("Se ha interrumido el sleep: ");
-	    System.out.println(ie.getMessage());
-	}
-	System.out.println(SALTOS); 
+		try{
+		    for( i = 1; i <= 8; ++i ){
+			System.out.println(SALTOS);
+			System.out.println(cadenaMonstruo);
+			Thread.sleep(120);
+			System.out.println(SALTOS);
+			System.out.println(tarjetaDanio);
+			Thread.sleep(120);
+		    }
+		}catch(InterruptedException ie){
+		    System.out.println("Se ha interrumido el sleep: ");
+		    System.out.println(ie.getMessage());
+		}
+		System.out.println(SALTOS); 
     }
 
 
@@ -559,10 +556,10 @@ public abstract class Monstruo{
      * @param n Numero de veces que se repetira el carácter
      */
     public static String r(String c,int n){
-	String r = "";
-	for(int i = 1; i <= n; ++i){
-	    r += c;
-	} 
-	return r;
+		String r = "";
+		for(int i = 1; i <= n; ++i){
+		    r += c;
+		} 
+		return r;
     }
 }

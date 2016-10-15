@@ -11,7 +11,7 @@
  * Recursos o fuentes:
 
  */
-
+package equipo;
 //import java.util.Scanner;
 import java.io.File;
 
@@ -25,7 +25,7 @@ import java.io.File;
 public abstract class MonstruoHierba extends Monstruo{
     // Constructor genErico
     public MonstruoHierba(){
-	super( "hierba" );	
+		super( "hierba" );	
     }
     // Constructor completo
     public MonstruoHierba(
@@ -37,30 +37,30 @@ public abstract class MonstruoHierba extends Monstruo{
 	    String apodo,
 	    byte nivel
     ){
-	super(
-		"hierba",
-		archTarjeta,
-		hpBase,
-		atqBase,
-		defBase,
-		velBase,
-		apodo,
-		nivel
-	);
+		super(
+			"hierba",
+			archTarjeta,
+			hpBase,
+			atqBase,
+			defBase,
+			velBase,
+			apodo,
+			nivel
+		);
 
     }
 
     public void ataque1(Monstruo enemigo){
-	int danioInfringido;
+		int danioInfringido;
 
-	System.out.println("¡" + this.apodo + "realiza impactrueno");
-	danioInfringido = causarDanio( enemigo );
-	System.out.println("El enemigo ha recibido: " + danioInfringido +
-		" de naño en este turno"
-	);
+		System.out.println("¡" + this.apodo + "realiza impactrueno");
+		danioInfringido = causarDanio( enemigo );
+		System.out.println("El enemigo ha recibido: " + danioInfringido +
+			" de naño en este turno"
+		);
 
-	if( enemigo.estado.compareTo("fuera de combate") == 0 ){
-	    recibirExperiencia( enemigo );    
-	}
+		if( enemigo.estado.compareTo("fuera de combate") == 0 ){
+		    recibirExperiencia( enemigo );    
+		}
     }
 }
