@@ -169,7 +169,7 @@ public class Torneo{
 	    }catch(Exception ime){}
 	}while(bandera);
 	enUso[contrincante] = c.monstruos.get(index - 1);
-	System.out.println("Has elegido a: " + enUso[contrincante] + "\n");
+	System.out.println("Has elegido a: \n" + enUso[contrincante] + "\n");
     }
 
     private void imprimirMenu(){
