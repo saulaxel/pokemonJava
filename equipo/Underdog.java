@@ -46,6 +46,7 @@ public class Underdog extends MonstruoFuego{
 		System.out.println("El enemigo ha recibido: " + danioInfringido +
 			" de daño en este turno"	
 		);
+		try{ Thread.sleep(3000); }catch(Exception e){}
 		
 		if( enemigo.estado.compareTo("fuera de combate") == 0 ){
 		    recibirExperiencia( enemigo );  
