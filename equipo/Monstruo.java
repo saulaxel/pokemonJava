@@ -47,8 +47,8 @@ public abstract class Monstruo{
     public static final double AUMENTO_DEFENSA = 0.15; // 15%
 
     // Cadenas para aplicar formato de impresiOn
-    protected static final String  ESPACIO = r(" ",25); 
-    protected static final String SALTOS = r("\n",48);
+    public static final String  ESPACIO = r(" ",25); 
+    public static final String SALTOS = r("\n",48);
 
     // Atributos
     protected String nombre;

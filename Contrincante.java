@@ -31,16 +31,17 @@ public class Contrincante{
 	int i;
 	Scanner sc = new Scanner( System.in );
 
-	System.out.println("¿Cuál es su nombre?");
+	System.out.print("¿Cuál es su nombre?\n> ");
 	this.nombre = sc.nextLine();
-
 	System.out.println("Elija los monstruos iniciales: ");
+	
 
 	monstruos = new ArrayList<equipo.Monstruo>();
-	pocimas = new ArrayList<Pocima>();
 
 	equipo.Monstruo monstruoNuevo = new equipo.monstruoRaro(); // si no la inicializo a algo chilla
-	for( i = 1; i < 6; ++i ){
+	for( i = 1; i <= 6; ++i ){
+	    System.out.println(equipo.Monstruo.SALTOS);
+	    System.out.println("Escoja el monstruo " + i);
 	    int eleccion = 0;
 	    System.out.println("\t 1) Electrode");
 	    System.out.println("\t 2) Gato ");
@@ -64,13 +65,14 @@ public class Contrincante{
 			b = false;
 		    }
 		}catch(InputMismatchException ime){}
+		sc.nextLine();
 	    }while(b);
 
-	    System.out.println("Ingrese el apodo de su nuevo pokemon");
-	    String apodo = sc.nextLine();
 
 	    byte nivel;
 	    nivel = (byte) (Math.random()*10 + 50);
+	    System.out.print("Ingrese el apodo de su nuevo pokemon\n>");
+	    String apodo = sc.nextLine();
 
 	    switch( eleccion ){
 		case 1:
@@ -120,8 +122,17 @@ public class Contrincante{
 		case 12:
 		    monstruoNuevo = new equipo.Underdog(apodo,nivel);
 		break;
+
 	    }
 	    monstruos.add(monstruoNuevo);
+
+	    pocimas = new ArrayList<Pocima>();
+	    pocimas.add(new PocimaAtaque());
+	    pocimas.add(new PocimaDefensa());
+	    pocimas.add(new PocimaVida());
+	    pocimas.add(new PocimaAtaque());
+	    pocimas.add(new PocimaDefensa());
+	    pocimas.add(new PocimaVida());
 	}
     }
 
@@ -145,6 +156,7 @@ public class Contrincante{
 		    b = false;    
 		}
 	    }catch(Exception ime){}
+	    sc.nextLine();
 	}while(b);
 
 	i = 1; 
@@ -161,10 +173,24 @@ public class Contrincante{
 
     public void mostrarMonstruos(){
 	int i = 1;
+	String clase;
 	System.out.println("Tus monstruos son: ");
 	for( equipo.Monstruo m: monstruos ){
-	    System.out.println(i + ") " + m.getClass().getName());     
+	    clase = m.getClass().getName();
+	    clase = clase.substring(clase.lastIndexOf('.') +1 );
+	    System.out.println(i + ") " + clase);     
 	    ++i;
 	} 
+    }
+
+    public void mostrarPocimas(){
+	int i = 1;
+	String clase;
+	System.out.println("Tus pocimas son; ");
+	for( Pocima p: pocimas ){
+	    clase = p.getClass().getName();
+	    clase = clase.substring(clase.lastIndexOf('-') +1 );
+	    System.out.println(i + ") " + clase);
+	}
     }
 }
