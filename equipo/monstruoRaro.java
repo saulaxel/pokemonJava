@@ -11,14 +11,14 @@
  * Recursos o fuentes:
 
  */
-
+package equipo;
 import java.util.Scanner;
 /**
  * <descripciOn>
  * @author paco 
  * @author saul
 */
-class monstruoRaro extends MonstruoAgua{
+public class monstruoRaro extends MonstruoAgua{
     public void ataque2(Monstruo objetivo){}
     protected int causarDanio2(Monstruo enemigo){ return 0; }
 

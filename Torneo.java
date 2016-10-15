@@ -29,6 +29,9 @@ public class Torneo{
 
     protected Contrincante jugar(){
 	Contrincante enTurno;
+	Monstruo[] enUso = new Monstruo[2];
+	enUso = {null,null};
+
 	boolean hayGanador = false;
 	Scanner sc = new Scanner( System.in );
 
@@ -40,10 +43,24 @@ public class Torneo{
 
 	int i = 1;
 	int opcion = -1;
+	int contrincante = 0;
 	boolean bandera;
 	do{
 	    System.out.println(Monstruo.SALTOS);
-	    System.out.println("Es el turno del jugador " + i%2 );
+	    contrincante = i%2;
+	    System.out.println("Es el turno del jugador " + contrincante );
+	    if( contrincante == 1 ){
+		enTurno = c1;
+	    }else{
+		enTurno = c2;
+	    }
+
+	    if( enUso[1] == null ){
+		elegirMonstruo(1);
+	    }
+	    if( enUso[2] == null ){
+		elegirMonstruo(2);
+	    }
 	    System.out.println("¿Qué desea hacer?");
 	    imprimirMenu();
 
@@ -63,7 +80,32 @@ public class Torneo{
 	return c1;
     }
 
+    private void elegirMonstruo( int contrincante ){
+	System.out.println("El contrincante " + contrincante + " debe elegir otro monstruo para pelear");
+	c1.mostrarMonstruos();
+	System.out.println("¿Qué monstruo desea usar?");
+		
+	int index;
+	bandera = true;
+	do{
+	    System.out.println("> ");
+	    try{
+		index = sc.nextInt();
+		if( index >= 1 && index <= 6 ){
+		    bandera = false;
+		}
+	    }catch(Exception ime){}
+	}while(bandera);
+	enUso[contrincante] == enTurno.monstruos.get(index-1);
+    }
+
     private void imprimeMenu(){
-	System.out.println("\t\t 1)");
+	System.out.println("\t\t 1) Ataque1");
+	System.out.println("\t\t 2) Ataque2");
+	System.out.println("\t\t 3) Usar pocima");
+    }
+
+    private void imprimePocimas(){
+
     }
 }

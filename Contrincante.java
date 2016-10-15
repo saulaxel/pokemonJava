@@ -23,7 +23,7 @@ import java.util.InputMismatchException;
  * @author saul
 */
 public class Contrincante{
-    protected ArrayList<Monstruo> monstruos;
+    protected ArrayList<equipo.Monstruo> monstruos;
     protected ArrayList<Pocima> pocimas;
     String nombre;
 
@@ -36,10 +36,10 @@ public class Contrincante{
 
 	System.out.println("Elija los monstruos iniciales: ");
 
-	monstruos = new ArrayList<Monstruo>();
+	monstruos = new ArrayList<equipo.Monstruo>();
 	pocimas = new ArrayList<Pocima>();
 
-	Monstruo monstruoNuevo = new monstruoRaro(); // si no la inicializo a algo chilla
+	equipo.Monstruo monstruoNuevo = new equipo.monstruoRaro(); // si no la inicializo a algo chilla
 	for( i = 1; i < 6; ++i ){
 	    int eleccion = 0;
 	    System.out.println("\t 1) Electrode");
@@ -74,69 +74,66 @@ public class Contrincante{
 
 	    switch( eleccion ){
 		case 1:
-		    monstruoNuevo = new Electrode(apodo,nivel);	
+		    monstruoNuevo = new equipo.Electrode(apodo,nivel);	
 		break;
 
 		case 2:
-		    monstruoNuevo = new Gato(apodo,nivel);
+		    monstruoNuevo = new equipo.Gato(apodo,nivel);
 		break;
 
 		case 3:
-		    monstruoNuevo = new Pikachu(apodo,nivel);
+		    monstruoNuevo = new equipo.Pikachu(apodo,nivel);
 		break;
 
 		case 4:
-		    monstruoNuevo = new Bobomb(apodo,nivel);
+		    monstruoNuevo = new equipo.Bobomb(apodo,nivel);
 		break;
 
 		case 5:
-		    monstruoNuevo = new Bomberman(apodo,nivel);
+		    monstruoNuevo = new equipo.Bomberman(apodo,nivel);
 		break;
 
 		case 6:
-		    monstruoNuevo = new Chinchou(apodo,nivel);
+		    monstruoNuevo = new equipo.Chinchou(apodo,nivel);
 		break;
 
 		case 7:
-		    monstruoNuevo = new Snorunt(apodo,nivel);
+		    monstruoNuevo = new equipo.Snorunt(apodo,nivel);
 		break;
 
 		case 8:
-		    monstruoNuevo = new Wynaut(apodo,nivel);
+		    monstruoNuevo = new equipo.Wynaut(apodo,nivel);
 		break;
 
 		case 9:
-		    monstruoNuevo = new Diglet(apodo,nivel);
+		    monstruoNuevo = new equipo.Diglet(apodo,nivel);
 		break;
 
 		case 10:
-		    monstruoNuevo = new Star(apodo,nivel);
+		    monstruoNuevo = new equipo.Star(apodo,nivel);
 		break;
 
 		case 11:
-		    monstruoNuevo = new Toad(apodo,nivel);
+		    monstruoNuevo = new equipo.Toad(apodo,nivel);
 		break;
 
 		case 12:
-		    monstruoNuevo = new Underdog(apodo,nivel);
+		    monstruoNuevo = new equipo.Underdog(apodo,nivel);
 		break;
 	    }
 	    monstruos.add(monstruoNuevo);
 	}
     }
 
-    protected void guardarMonstruo( Monstruo m ){
+    protected void guardarMonstruo( equipo.Monstruo m ){
 	monstruos.add(m);
     }
 
-    protected Monstruo elegirMonstruo(){
+    protected equipo.Monstruo elegirMonstruo(){
 	Scanner sc = new Scanner( System.in );
 	int i = 1;
-	System.out.println("Tus monstruos son: ");
-	for( Monstruo m: monstruos ){
-	    System.out.println(i + ") " + m.getClass().getName());     
-	    ++i;
-	} 
+
+	mostrarMonstruos();
 	System.out.println("Elije el número de tu monstruo");
 	boolean b = true;
 	int pos = 0;
@@ -147,12 +144,12 @@ public class Contrincante{
 		if( pos >=1 && pos <= 6 ){
 		    b = false;    
 		}
-	    }catch(InputMismatchException ime){}
+	    }catch(Exception ime){}
 	}while(b);
 
 	i = 1; 
 	int index = 0;
-	for( Monstruo m: monstruos ){
+	for( equipo.Monstruo m: monstruos ){
 	    if( i == pos ){
 		index = monstruos.indexOf(m);
 	    }
@@ -160,5 +157,14 @@ public class Contrincante{
 	}
 
 	return monstruos.get(index);
+    }
+
+    public void mostrarMonstruos(){
+	int i = 1;
+	System.out.println("Tus monstruos son: ");
+	for( equipo.Monstruo m: monstruos ){
+	    System.out.println(i + ") " + m.getClass().getName());     
+	    ++i;
+	} 
     }
 }
