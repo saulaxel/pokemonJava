@@ -117,6 +117,7 @@ public class Torneo{
 			elegirPocima(contrincante);
 		    break;
 		}
+		sc.nextLine();
 	    }else{
 		System.out.println("No hay turno para tu monstruo paralizado");
 	    }
