@@ -203,7 +203,8 @@ public class Torneo{
 	cad2 = enUso[1].getClass().getName();
 	cad2 = cad2.substring(cad2.lastIndexOf('.') +1 );
 	System.out.printf("%-40s%-40s\n",cad1 + " " + enUso[0].getApodo(),cad2+" " +enUso[1].getApodo());
-	System.out.printf("%-40s%-40s\n","Nivel: "+enUso[0].getNivel(),"Nivel; "+enUso[1].getNivel());
+	System.out.printf("%-40s%-40s\n","HP restante: "+enUso[0].getHp(),"HP restante: "+enUso[1].getHp());
+	System.out.printf("%-40s%-40s\n","Nivel: "+enUso[0].getNivel(),"Nivel: "+enUso[1].getNivel());
 	System.out.printf("%-40s%-40s\n","Ataque: "+enUso[0].getAtaque(),"Ataque: "+enUso[1].getAtaque());
 	System.out.printf("%-40s%-40s\n","Defensa: "+enUso[0].getDefensa(),"Defensa: "+enUso[1].getDefensa());
 	System.out.printf("%-40s%-40s\n","Velocidad: "+enUso[0].getVelocidad(),"Velocidad: "+enUso[1].getVelocidad());
