@@ -97,6 +97,7 @@ public abstract class Monstruo{
 		this.nivel = 1;
 		this.estado = "ok";
 		this.expNecesaria = 100;
+	    inicializar();
     }
 
     public Monstruo(
@@ -139,6 +140,7 @@ public abstract class Monstruo{
 		this.nivel = nivel;
 		this.estado = "ok";
 		this.expNecesaria = 100 * nivel;
+	    inicializar();
     }
 
     // MEtodos
