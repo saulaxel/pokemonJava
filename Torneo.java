@@ -47,7 +47,7 @@ public class Torneo{
 	System.out.println("");
 	sc.nextLine();
 
-	int i = 1;
+	int i = 0;
 	int opcion = -1;
 	int contrincante = 0;
 	boolean bandera;
@@ -62,10 +62,8 @@ public class Torneo{
 		elegirMonstruo(1);
 	    }
 
-	    System.out.println("Las estadisticas de los monstruos son:");
-	    System.out.print();
-
-	    System.out.println("Es el turno del jugador " + (1+contrincante) );
+	    imprimirMonstruos();
+	    System.out.println("\nEs el turno del jugador " + (1+contrincante) );
 	    if( contrincante == 0 ){
 		enTurno = c1;
 		if( enUso[0].getEstado().compareTo("paralizado") == 0 ){
@@ -97,6 +95,27 @@ public class Torneo{
 		}while( bandera );
 
 		switch( opcion ){
+		    case 1:
+			if( contrincante == 0 ){
+			    enUso[1].ataque1(enUso[2]);
+			}else{
+			    enUso[2].ataque1(enUso[1]);
+			}
+		    break;
+
+		    case 2:
+			if( contrincante == 0 ){
+			    enUso[1].ataque2(enUso[2]);
+			}else{
+			    enUso[2].ataque2(enUso[1]);
+			}
+		    break;
+
+		    case 3:
+			System.out.println("¿Qué pocima desea usar?");
+			imprimirPocimas(contrincante);
+			elegirPocima(contrincante);
+		    break;
 		}
 	    }else{
 		System.out.println("No hay turno para tu monstruo paralizado");
@@ -132,7 +151,8 @@ public class Torneo{
 		}
 	    }catch(Exception ime){}
 	}while(bandera);
-	enUso[contrincante] = c.monstruos.get(index);
+	enUso[contrincante] = c.monstruos.get(index - 1);
+	System.out.println("Has elegido a: " + enUso[contrincante]);
     }
 
     private void imprimirMenu(){
@@ -150,5 +170,52 @@ public class Torneo{
 	}
 
 	c.mostrarPocimas();
+    }
+
+    private void imprimirMonstruos(){
+	String cad1, cad2;
+	System.out.println("Las estadisticas de los monstruos son:");
+	System.out.printf("%-40s%-40s\n","Monstruo 1","Monstruo 2");
+	cad1 = enUso[0].getClass().getName();
+	cad1 = cad1.substring(cad1.lastIndexOf('.') +1 ); 
+	cad2 = enUso[1].getClass().getName();
+	cad2 = cad2.substring(cad2.lastIndexOf('.') +1 );
+	System.out.printf("%-40s%-40s\n","Nivel: "+enUso[0].getNivel(),"Nivel; "+enUso[1].getNivel());
+	System.out.printf("%-40s%-40s\n","Ataque: "+enUso[0].getAtaque(),"Ataque: "+enUso[1].getAtaque());
+	System.out.printf("%-40s%-40s\n","Defensa: "+enUso[0].getDefensa(),"Defensa: "+enUso[1].getDefensa());
+	System.out.printf("%-40s%-40s\n","Velocidad: "+enUso[0].getVelocidad(),"Velocidad: "+enUso[1].getVelocidad());
+    }
+
+    private void elegirPocima( int contrincante ){
+	boolean b = true;
+	Contrincante c;
+	Pocima usable = new PocimaAtaque();
+
+	if( contrincante == 0 ){
+	    c = c1;
+	}else{
+	    c = c2;
+	}
+	int escogida = 0;
+	do{
+	    System.out.print("> ");
+	    try{
+		escogida = sc.nextInt();
+		if( escogida >= 1 && escogida <= c2.pocimas.size() ){
+		    b = false;
+		}
+	    }catch(Exception ime){}
+	    sc.nextLine();
+	}while(b);
+	
+	int index = 1;
+	for( Pocima p: c.pocimas ){
+	    if( index == escogida ){
+		usable = c.pocimas.get(index -1);
+	    }
+	    ++index;
+	}
+
+	usable.usarPocima(enUso[contrincante]);
     }
 }
