@@ -34,18 +34,16 @@ public class Main{
     public static void main( String[] args ){
 	ArrayList<Contrincante> usuarios = new ArrayList<>();
 
-	System.out.println(Monstruo.SALTOS);
+	System.out.println(equipo.Monstruo.SALTOS);
 	System.out.println("\t\tBienvenido al PPROTEMON");
 	System.out.println("\t\t_______________________");
 	System.out.println("\n\n\n\n\n");
 	sc.nextLine();
 
-	usuarios = leerUsuarios();
-	
 	int opcion;
 	
 	do{
-	    System.out.println(Monstruo.SALTOS);
+	    System.out.println(equipo.Monstruo.SALTOS);
 	    System.out.println("Indique la opción que desea realizar");
 	    imprimirMenu(); 
 	    opcion = leerOpcion();
@@ -69,14 +67,14 @@ public class Main{
     }
 
     private static void iniciarJuego(){
-	Torneo t = new Torneo();
+	Torneo t; 
 	Contrincante c1, c2;
 	System.out.println("Ingrese los datos del primer contrincante:");
 	c1 = new Contrincante();
 	System.out.println("Ingrese los datos del segundo contrincante:");
 	c2 = new Contrincante();
-
-	t.jugar( c1, c2);
+	t = new Torneo(c1, c2);
+	t.jugar();
     }
 
     private static int leerOpcion(){
