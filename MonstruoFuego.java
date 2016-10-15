@@ -11,7 +11,7 @@
  * Recursos o fuentes:
 
  */
-
+package equipo;
 //import java.util.Scanner;
 import java.io.File;
 
