@@ -23,10 +23,6 @@ public class Pikachu extends MonstruoElectrico{
 //    public void ataque2(Monstruo objetivo){}
 
 	public Pikachu(
-		int hpBase, 
-		int atqBase, 
-		int defBase,
-	    int velBase,
 	    String apodo,
 	    byte nivel
 	){ 
