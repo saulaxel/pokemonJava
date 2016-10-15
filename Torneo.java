@@ -18,6 +18,8 @@
  * @author paco 
  * @author saul
 */
-protected class 
+public class Torneo{
+    protected Contrincante c1;
+    protected Contrincante c2;
 
 }
