@@ -20,6 +20,7 @@ import java.util.Scanner;
 */
 class monstruoRaro extends MonstruoAgua{
     public void ataque2(Monstruo objetivo){}
+    protected int causarDanio2(Monstruo enemigo){ return 0; }
 
     public static void main( String[] args ){
 	monstruoRaro raro = new monstruoRaro();
