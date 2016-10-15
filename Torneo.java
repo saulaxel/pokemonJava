@@ -143,7 +143,11 @@ public class Torneo{
 	}while( !hayGanador );
 	
 	// RegresarA al ganador
-	return c1;
+	if( contrincante == 0 ){
+	    return c1;
+	}else{
+	    return c2;
+	}
     }
 
     private void elegirMonstruo( int contrincante ){
@@ -198,6 +202,7 @@ public class Torneo{
 	cad1 = cad1.substring(cad1.lastIndexOf('.') +1 ); 
 	cad2 = enUso[1].getClass().getName();
 	cad2 = cad2.substring(cad2.lastIndexOf('.') +1 );
+	System.out.printf("%-40s%-40s\n",cad1 + " " + enUso[0].getApodo(),cad2+" " +enUso[1].getApodo());
 	System.out.printf("%-40s%-40s\n","Nivel: "+enUso[0].getNivel(),"Nivel; "+enUso[1].getNivel());
 	System.out.printf("%-40s%-40s\n","Ataque: "+enUso[0].getAtaque(),"Ataque: "+enUso[1].getAtaque());
 	System.out.printf("%-40s%-40s\n","Defensa: "+enUso[0].getDefensa(),"Defensa: "+enUso[1].getDefensa());
