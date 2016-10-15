@@ -69,7 +69,14 @@ public class Main{
     }
 
     private static void iniciarJuego(){
-	
+	Torneo t = new Torneo();
+	Contrincante c1, c2;
+	System.out.println("Ingrese los datos del primer contrincante:");
+	c1 = new Contrincante();
+	System.out.println("Ingrese los datos del segundo contrincante:");
+	c2 = new Contrincante();
+
+	t.jugar( c1, c2);
     }
 
     private static int leerOpcion(){
