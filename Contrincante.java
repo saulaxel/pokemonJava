@@ -40,6 +40,7 @@ public class Contrincante{
 
 	equipo.Monstruo monstruoNuevo = new equipo.monstruoRaro(); // si no la inicializo a algo chilla
 	for( i = 1; i <= 6; ++i ){
+	    boolean y = true;
 	    System.out.println(equipo.Monstruo.SALTOS);
 	    System.out.println("Escoja el monstruo " + i);
 	    int eleccion = 0;
@@ -124,16 +125,29 @@ public class Contrincante{
 		break;
 
 	    }
-	    monstruos.add(monstruoNuevo);
+	    	for(int x=0;x<monstruos.size();x++){
+		    if((monstruoNuevo.getClass().getName()).equals(monstruos.get(x).getClass().getName())){
+		    	y = false;
+		    }
+		}
+		
+		if(y){
+			monstruos.add(monstruoNuevo);
+		}else{
+			System.out.println("Ya has elegido a ese monstruo.");
+			sc.nextLine();
+			i--;
+		}
 
-	    pocimas = new ArrayList<Pocima>();
-	    pocimas.add(new PocimaAtaque());
-	    pocimas.add(new PocimaDefensa());
-	    pocimas.add(new PocimaVida());
-	    pocimas.add(new PocimaAtaque());
-	    pocimas.add(new PocimaDefensa());
-	    pocimas.add(new PocimaVida());
+	    
 	}
+	pocimas = new ArrayList<Pocima>();
+	pocimas.add(new PocimaAtaque());
+	pocimas.add(new PocimaDefensa());
+	pocimas.add(new PocimaVida());
+	pocimas.add(new PocimaAtaque());
+	pocimas.add(new PocimaDefensa());
+	pocimas.add(new PocimaVida());
     }
 
     protected void guardarMonstruo( equipo.Monstruo m ){
